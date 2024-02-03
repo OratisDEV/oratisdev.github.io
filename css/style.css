@@ -8,7 +8,7 @@
   text-decoration: none;
 }
 *::selection {
-  color: #ffffff;
+  color: #F93604;
 }
 html {
   scroll-behavior: smooth;
@@ -25,7 +25,7 @@ html {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background: #ff0000;
+  background: #F93604;
   box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25), inset -2px -2px -2px rgba(0,0,0,0.25);
 }
 
@@ -71,7 +71,7 @@ html {
   transition: color 0.3s ease;
 }
 .navbar .menu li a:hover {
-  color: #ff0000;
+  color: #F93604;
 }
 .navbar.sticky .menu li a:hover {
   color: #fff;
@@ -92,7 +92,7 @@ html {
   bottom: 10px;
   text-align: center;
   line-height: 45px;
-  color: #FF0000;
+  color: #F93604;
   z-index: 9999;
   font-size: 30px;
   border-radius: 6px;
@@ -138,7 +138,7 @@ html {
   margin: 5px 0;
 }
 .home .home-content .text-3 span {
-  color: #ff0000;
+  color: #F93604;
   font-weight: 500;
 }
 .this-is-pain {
@@ -150,12 +150,12 @@ html {
   padding: 12px 36px;
   margin-top: 20px;
   border-radius: 6px;
-  border: 2px solid #ff0000;
+  border: 2px solid #F93604;
   transition: all 0.3s ease;
 }
 .this-is-pain:hover {
   background: none;
-  color: #ff0000;
+  color: #F93604;
 }
 .this-is-pain2 {
   position: absolute;
@@ -166,12 +166,12 @@ html {
   padding: 12px 36px;
   margin-top: 90px;
   border-radius: 6px;
-  border: 2px solid #ff0000;
+  border: 2px solid #F93604;
   transition: all 0.3s ease;
 }
 .this-is-pain2:hover {
   background: none;
-  color: #ff0000;
+  color: #F93604;
 }
 
 section {
@@ -201,7 +201,7 @@ section .title::after {
   bottom: -12px;
   left: 50%;
   font-size: 20px;
-  color: #ff0000;
+  color: #F93604;
   padding: 5px;
   background: #fff;
   transform: translateX(-50%);
@@ -239,7 +239,7 @@ section .title::after {
   margin-bottom: 20px;
 }
 .card:hover {
-  background: #ff0000;
+  background: #F93604;
 }
 .card:hover i {
   color: #fff;
@@ -252,7 +252,7 @@ section .title::after {
 }
 .card i {
   font-size: 50px;
-  color: #ff0000;
+  color: #F93604;
   transition: color 0.3s ease;
 }
 .card .text {
@@ -287,7 +287,7 @@ section .title::after {
   transition: all 0.3s ease;
 }
 .contributors .carousel .cardd:hover {
-  background: #ff0000;
+  background: #F93604;
 }
 .contributors .carousel .cardd .boxx {
   display: flex;
@@ -310,7 +310,7 @@ section .title::after {
   width: 150px;
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid #ff0000;
+  border: 5px solid #F93604;
   transition: all 0.3s ease;
 }
 .contributors .carousel .cardd:hover img {
@@ -326,7 +326,7 @@ section .title::after {
   background: #00ffff;
 }
 .badges.developer {
-  background: #ff0000;
+  background: #F93604;
   color: #121212;
   border: none;
 }
