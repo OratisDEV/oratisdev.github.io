@@ -3,8 +3,8 @@ body {
     color: #fff;
     background-color: #141414;
     font-weight: 600;
+    margin: 50px;
 }
-
 
 footer {
     font-family: 'Poppins', sans-serif;
@@ -14,10 +14,12 @@ footer {
     color: #fff;
     text-align: center;
 }
+
 footer span a {
     color: #22b4b7;
     text-decoration: none;
 }
+
 footer span a:hover {
     text-decoration: underline;
 }
