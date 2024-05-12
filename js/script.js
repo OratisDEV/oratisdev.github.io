@@ -23,9 +23,8 @@ $(document).ready(function() {
 
   var typed = new Typed('.typing', {
     strings: [
-      "SpaceDam",
+      "Keyscape",
       "an original bot",
-      " made for everyone",
     ],
     typeSpeed: 130,
     backSpeed: 90,

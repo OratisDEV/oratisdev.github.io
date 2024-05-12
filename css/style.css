@@ -341,6 +341,10 @@ section .title::after {
   background: #472cc9;
   color: #121212;
 }
+.badges.beta {
+  background: #20d456;
+  color: #121212;
+}
 
 .owl-dots {
   text-align: center;
