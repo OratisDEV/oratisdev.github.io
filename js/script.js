@@ -24,7 +24,7 @@ $(document).ready(function() {
   var typed = new Typed('.typing', {
     strings: [
       "Keyscape",
-      "an original bot",
+      "un bot original!",
     ],
     typeSpeed: 130,
     backSpeed: 90,
