@@ -10,16 +10,13 @@ footer {
     font-family: 'Poppins', sans-serif;
     background: #121212;
     padding: 20px 23px;
-    
     color: #fff;
     text-align: center;
-}
-
-footer span a {
+  }
+  footer span a {
     color: #22b4b7;
     text-decoration: none;
-}
-
-footer span a:hover {
+  }
+  footer span a:hover {
     text-decoration: underline;
-}
+  }
