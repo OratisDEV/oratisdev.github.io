@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimCity Build-ER</title>
+    <link rel="stylesheet" href="scb/styles.css">
+</head>
+<body>
+    <div id="container">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">Roads</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="road" draggable="true" data-width="1" data-height="1" data-type="road" style="background-color: gray;">R</div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">Residential buildings</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="RZ" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(2, 161, 55);">RZ</div>
+                    <div class="draggable" id="shop" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(170, 228, 255);">S</div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">Electricity</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="fusion-power-plant" draggable="true" data-width="3" data-height="3" data-type="building" style="background-color: rgb(238, 255, 0);">FPP</div>
+                    <div class="draggable" id="oil-power-plant" draggable="true" data-width="4" data-height="2" data-type="building" style="background-color: rgb(238, 255, 0);">OPP</div>
+                    <div class="draggable" id="solar-power-plant" draggable="true" data-width="4" data-height="2" data-type="building" style="background-color: rgb(238, 255, 0);">SPP</div>
+                    <div class="draggable" id="Improved-wind-power-plant" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(238, 255, 0);">IWPP</div>
+                    <div class="draggable" id="coal-fired-power-plant" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(238, 255, 0);">CPP</div>
+                    <div class="draggable" id="wind-power-plant" draggable="true" data-width="1" data-height="1" data-type="building" style="background-color: rgb(238, 255, 0);">W</div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">Water</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="pump-station" draggable="true" data-width="3" data-height="2" data-type="building" style="background-color: rgb(103, 174, 255);">PS</div>
+                    <div class="draggable" id="water-tower" draggable="true" data-width="1" data-height="1" data-type="building" style="background-color: rgb(103, 174, 255);">W</div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">Waste Water</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="improved-wastewater-treatment-plant" draggable="true" data-width="3" data-height="2" data-type="building" style="background-color: rgb(129, 101, 0);">IWDP</div>
+                    <div class="draggable" id="drain-pipe" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(129, 101, 0);">DP</div>
+                    <div class="draggable" id="small-drain-pipe" draggable="true" data-width="1" data-height="1" data-type="building" style="background-color: rgb(129, 101, 0);">SDP</div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">Trash</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="recycling-plant" draggable="true" data-width="3" data-height="2" data-type="building" style="background-color: rgb(85, 67, 0);">RP</div>
+                    <div class="draggable" id="waste-incinerator" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(85, 67, 0);">WI</div>
+                    <div class="draggable" id="dump" draggable="true" data-width="3" data-height="2" data-type="building" style="background-color: rgb(85, 67, 0);">D</div>
+                    <div class="draggable" id="small-dump" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(85, 67, 0);">SD</div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">Fire Stations</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="improved-fire-station" draggable="true" data-width="4" data-height="2" data-type="building" style="background-color: rgb(250, 102, 102);">IFS</div>
+                    <div class="draggable" id="fire-station" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(250, 102, 102);">FS</div>
+                    <div class="draggable" id="small-fire-station" draggable="true" data-width="1" data-height="1" data-type="building" style="background-color: rgb(250, 102, 102);">SFS</div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">Police Stations</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="improved-police-station" draggable="true" data-width="4" data-height="2" data-type="building" style="background-color: rgb(74, 116, 233);">IPS</div>
+                    <div class="draggable" id="police-station" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(74, 116, 233);">PS</div>
+                    <div class="draggable" id="small-police-station" draggable="true" data-width="1" data-height="1" data-type="building" style="background-color: rgb(74, 116, 233);">SPS</div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">Health</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="hospital" draggable="true" data-width="4" data-height="2" data-type="building" style="background-color: rgb(197, 255, 209);">H</div>
+                    <div class="draggable" id="clinic" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(197, 255, 209);">C</div>
+                    <div class="draggable" id="small-clinic" draggable="true" data-width="1" data-height="1" data-type="building" style="background-color: rgb(197, 255, 209);">SC</div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">Education</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="university" draggable="true" data-width="4" data-height="4" data-type="building" style="background-color: rgb(255, 255, 255);">U</div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">Boost</div>
+                <div class="accordion-content">
+                    <div class="draggable" id="park" draggable="true" data-width="1" data-height="2" data-type="building" style="background-color: rgb(161, 224, 198);">PP</div>
+                    <div class="draggable" id="small-park" draggable="true" data-width="1" data-height="1" data-type="building" style="background-color: rgb(161, 224, 198);">SP</div>
+                    <div class="draggable" id="storage" draggable="true" data-width="3" data-height="2" data-type="building" style="background-color: rgb(195, 0, 255);">S</div>
+                    <div class="draggable" id="small-admin" draggable="true" data-width="3" data-height="3" data-type="building" style="background-color: rgb(120, 38, 145);">SA</div>
+                    <div class="draggable" id="admin" draggable="true" data-width="3" data-height="2" data-type="building" style="background-color: rgb(120, 38, 145);">A</div>
+                    <div class="draggable" id="heli-pad" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(164, 78, 190);">HP</div>
+                    <div class="draggable" id="lux-casino" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(255, 135, 165);">LC</div>
+                    <div class="draggable" id="was-mon" draggable="true" data-width="2" data-height="2" data-type="building" style="background-color: rgb(255, 184, 30);">WM</div>
+                    <div class="draggable" id="ferris-wheel" draggable="true" data-width="3" data-height="3" data-type="building" style="background-color: rgb(0, 38, 255);">FW</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="map">
+            <div id="grid"></div>
+            <div id="overlay"></div>
+        </div>
+        
+        <div id="menu">
+            <!-- Pour faire de l'espace -->
+        </div>
+
+        <div id="menu">
+            <button class="button" id="saveBtn">Save</button>
+            <br>
+            <br>
+            <button class="button" id="loadBtn">Load</button>
+            <input type="file" id="fileInput" style="display: none;" />
+            <br>
+            <br>
+            <button class="button" id="loadExBtn">Example</button>
+        </div>
+    </div>
+    <script>
+        // JavaScript pour gérer les accordéons
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                
+                // Fermer les autres contenus ouverts
+                document.querySelectorAll('.accordion-content').forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Basculer l'état de visibilité du contenu cliqué
+                content.classList.toggle('active');
+            });
+        });
+    </script>
+    <script src="scb/script.js"></script>
+</body>
+</html>
