@@ -135,3 +135,43 @@ body {
 .accordion-content.active {
     display: block;
 }
+
+
+
+.accordion1 {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.accordion-item1 {
+    border-top: 1px solid #ddd;
+}
+
+.accordion-item1:first-child {
+    border-top: none;
+}
+
+.accordion-header1 {
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #f1f1f1;
+    transition: background 0.3s ease;
+}
+
+.accordion-header1:hover {
+    background: #e1e1e1;
+}
+
+.accordion-content1 {
+    display: none;
+    padding: 10px;
+    background: #ffffff;
+}
+
+.accordion-content1.active {
+    display: block;
+}

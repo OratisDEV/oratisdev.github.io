@@ -10080,16 +10080,6 @@
     "textContent": "W"
   },
   {
-    "id": "clone-1717361713899",
-    "type": "building",
-    "width": "3",
-    "height": "2",
-    "left": "0px",
-    "top": "0px",
-    "backgroundColor": "rgb(195, 0, 255)",
-    "textContent": "S"
-  },
-  {
     "id": "clone-1717361734035",
     "type": "building",
     "width": "3",
@@ -10168,5 +10158,15 @@
     "top": "208.693px",
     "backgroundColor": "rgb(0, 38, 255)",
     "textContent": "FW"
+  },
+  {
+    "id": "clone-1717525246541",
+    "type": "building",
+    "width": "3",
+    "height": "2",
+    "left": "0px",
+    "top": "0px",
+    "backgroundColor": "rgb(195, 0, 255)",
+    "textContent": "St"
   }
 ]

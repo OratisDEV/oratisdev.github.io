@@ -28,6 +28,7 @@
                 <div class="accordion-header">Electricity</div>
                 <div class="accordion-content">
                     <div class="draggable" id="fusion-power-plant" draggable="true" data-width="3" data-height="3" data-type="building" data-name="FPP" style="background-color: rgb(238, 255, 0);">Fusion Power Plant (FPP)</div>
+                    <div class="draggable" id="nuclear-plant" draggable="true" data-width="4" data-height="3" data-type="building" data-name="NP" style="background-color: rgb(238, 255, 0);">Nuclear Plant (NP)</div>
                     <div class="draggable" id="oil-power-plant" draggable="true" data-width="4" data-height="2" data-type="building" data-name="OPP" style="background-color: rgb(238, 255, 0);">Oil Power Plant (OPP)</div>
                     <div class="draggable" id="solar-power-plant" draggable="true" data-width="4" data-height="2" data-type="building" data-name="SPP" style="background-color: rgb(238, 255, 0);">Solar Power Plant (SPP)</div>
                     <div class="draggable" id="Improved-wind-power-plant" draggable="true" data-width="2" data-height="2" data-type="building" data-name="IWPP" style="background-color: rgb(238, 255, 0);">Improved Wind Power Plant (IWPP)</div>
@@ -100,15 +101,20 @@
             <div class="accordion-item">
                 <div class="accordion-header">Boost</div>
                 <div class="accordion-content">
-                    <div class="draggable" id="park" draggable="true" data-width="1" data-height="2" data-type="building" data-name="PP" style="background-color: rgb(161, 224, 198);">PP</div>
-                    <div class="draggable" id="small-park" draggable="true" data-width="1" data-height="1" data-type="building" data-name="SP" style="background-color: rgb(161, 224, 198);">SP</div>
-                    <div class="draggable" id="storage" draggable="true" data-width="3" data-height="2" data-type="building" data-name="S" style="background-color: rgb(195, 0, 255);">S</div>
-                    <div class="draggable" id="small-admin" draggable="true" data-width="3" data-height="3" data-type="building" data-name="SA" style="background-color: rgb(120, 38, 145);">SA</div>
-                    <div class="draggable" id="admin" draggable="true" data-width="3" data-height="2" data-type="building" data-name="A" style="background-color: rgb(120, 38, 145);">A</div>
-                    <div class="draggable" id="heli-pad" draggable="true" data-width="2" data-height="2" data-type="building" data-name="HP" style="background-color: rgb(164, 78, 190);">HP</div>
-                    <div class="draggable" id="lux-casino" draggable="true" data-width="2" data-height="2" data-type="building" data-name="LC" style="background-color: rgb(255, 135, 165);">LC</div>
-                    <div class="draggable" id="was-mon" draggable="true" data-width="2" data-height="2" data-type="building" data-name="WM" style="background-color: rgb(255, 184, 30);">WM</div>
-                    <div class="draggable" id="ferris-wheel" draggable="true" data-width="3" data-height="3" data-type="building" data-name="FW" style="background-color: rgb(0, 38, 255);">FW</div>
+                    <div class="accordion-item1">
+                        <div class="accordion-header1">Parks</div>
+                        <div class="accordion-content1">
+                            <div class="draggable" id="park" draggable="true" data-width="1" data-height="2" data-type="building" data-name="PP" style="background-color: rgb(161, 224, 198);">Peaceful Park (PP)</div>
+                            <div class="draggable" id="small-park" draggable="true" data-width="1" data-height="1" data-type="building" data-name="SP" style="background-color: rgb(161, 224, 198);">Sakura Park (SP)</div>
+                        </div>
+                    </div>
+                    <div class="draggable" id="storage" draggable="true" data-width="3" data-height="2" data-type="building" data-name="St" style="background-color: rgb(195, 0, 255);">Storage (St)</div>
+                    <div class="draggable" id="small-admin" draggable="true" data-width="3" data-height="3" data-type="building" data-name="SA" style="background-color: rgb(120, 38, 145);">Admin (SA)</div>
+                    <div class="draggable" id="admin" draggable="true" data-width="3" data-height="2" data-type="building" data-name="A" style="background-color: rgb(120, 38, 145);">Admin (A)</div>
+                    <div class="draggable" id="heli-pad" draggable="true" data-width="2" data-height="2" data-type="building" data-name="HP" style="background-color: rgb(164, 78, 190);">Helipad (HP)</div>
+                    <div class="draggable" id="lux-casino" draggable="true" data-width="2" data-height="2" data-type="building" data-name="LC" style="background-color: rgb(255, 135, 165);">Luxury Casino (LC)</div>
+                    <div class="draggable" id="was-mon" draggable="true" data-width="2" data-height="2" data-type="building" data-name="WM" style="background-color: rgb(255, 184, 30);">Was Mon (WM)</div>
+                    <div class="draggable" id="ferris-wheel" draggable="true" data-width="3" data-height="3" data-type="building" data-name="FW" style="background-color: rgb(0, 38, 255);">Ferris Wheel (FW)</div>
                 </div>
             </div>
         </div>
@@ -136,6 +142,7 @@
     <script>
         // JavaScript pour gérer les accordéons
         const accordionHeaders = document.querySelectorAll('.accordion-header');
+        const accordionHeaders1 = document.querySelectorAll('.accordion-header1');
         
         accordionHeaders.forEach(header => {
             header.addEventListener('click', () => {
@@ -143,6 +150,22 @@
                 
                 // Fermer les autres contenus ouverts
                 document.querySelectorAll('.accordion-content').forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Basculer l'état de visibilité du contenu cliqué
+                content.classList.toggle('active');
+            });
+        });
+        
+        accordionHeaders1.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                
+                // Fermer les autres contenus ouverts
+                document.querySelectorAll('.accordion-content1').forEach(item => {
                     if (item !== content) {
                         item.classList.remove('active');
                     }
