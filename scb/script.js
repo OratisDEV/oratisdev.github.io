@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     clone.addEventListener('contextmenu', removeBuilding);
 
                     if (clone.dataset.type === 'building' && clone.id === 'hospital') {
-                        clone.addEventListener('mouseenter', showHighlightZone);
-                        clone.addEventListener('mouseleave', removeHighlightZone);
+                        clone.addEventListener('mouseenter', show24xHighlightZone);
+                        clone.addEventListener('mouseleave', remove24xHighlightZone);
                     }
                 });
             })
