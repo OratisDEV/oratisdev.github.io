@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const clone = originalElement.cloneNode(true);
         clone.id = 'clone-' + Date.now();
         clone.classList.add('cloned');
+        clone.textContent = originalElement.dataset.shortname; // Utilise le nom raccourci
         map.appendChild(clone);
         e.dataTransfer.setData('text/plain', clone.id);
 
@@ -209,14 +210,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         highlightZone.style.height = `${24 * gridCellSize}px`;
         highlightZone.style.backgroundColor = 'rgba(0, 255, 0, 0.5)';
         highlightZone.style.pointerEvents = 'none';
-        highlightZone.style.zIndex = '9999';  // Added to bring the highlight zone to the front
+        highlightZone.style.zIndex = '9999';
         highlightZone.id = 'highlight-zone';
 
         const left = parseFloat(target.style.left);
         const top = parseFloat(target.style.top);
 
-        highlightZone.style.left = `${left - 10 * gridCellSize}px`;
-        highlightZone.style.top = `${top - 10 * gridCellSize}px`;
+        highlightZone.style.left = `${left - ((24 - parseFloat(target.dataset.width)) / 2) * gridCellSize}px`;
+        highlightZone.style.top = `${top - ((24 - parseFloat(target.dataset.height)) / 2) * gridCellSize}px`;
 
         document.getElementById('overlay').appendChild(highlightZone);
     }
@@ -244,8 +245,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const left = parseFloat(target.style.left);
         const top = parseFloat(target.style.top);
 
-        highlightZone.style.left = `${left - (22 - parseFloat(target.dataset.width)) / 2 * gridCellSize}px`;
-        highlightZone.style.top = `${top - (22 - parseFloat(target.dataset.height)) / 2 * gridCellSize}px`;
+        highlightZone.style.left = `${left - ((22 - parseFloat(target.dataset.width)) / 2) * gridCellSize}px`;
+        highlightZone.style.top = `${top - ((22 - parseFloat(target.dataset.height)) / 2) * gridCellSize}px`;
 
         document.getElementById('overlay').appendChild(highlightZone);
     }
