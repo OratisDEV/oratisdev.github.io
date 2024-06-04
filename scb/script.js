@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const clone = originalElement.cloneNode(true);
         clone.id = 'clone-' + Date.now();
         clone.classList.add('cloned');
-        clone.textContent = originalElement.dataset.shortname; // Utilise le nom raccourci
+        clone.textContent = originalElement.dataset.name;
         map.appendChild(clone);
         e.dataTransfer.setData('text/plain', clone.id);
 
