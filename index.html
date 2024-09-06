@@ -1,243 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
+<title>Keyscapes</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<style>
+    html, body { 
+        padding: 0; 
+        margin: 0; 
+        width: 100%; 
+        height: 100%; 
+    }
+    * {
+        box-sizing: border-box;
+    }
+    body { 
+        text-align: center; 
+        padding: 0; 
+        background: #2e2929; 
+        color: #fff; 
+        font-family: Open Sans;
+    }
+    h1 { 
+        font-size: 50px; 
+        font-weight: 100; 
+        text-align: center;
+    }
+    body { 
+        font-family: Open Sans; 
+        font-weight: 100; 
+        font-size: 20px; 
+        color: #fff; 
+        text-align: center; 
+        display: -webkit-box; 
+        display: -ms-flexbox; 
+        display: flex; 
+        -webkit-box-pack: center; 
+        -ms-flex-pack: center; 
+        justify-content: center; 
+        -webkit-box-align: center; 
+        -ms-flex-align: center; 
+        align-items: center;
+    }
+    article { 
+        display: block; 
+        width: 700px; 
+        padding: 50px; 
+        margin: 0 auto;
+    }
+    a { 
+        color: #fff; 
+        font-weight: bold;
+    }
+    a:hover { 
+        text-decoration: none; 
+    }
+    svg { 
+        width: 75px; 
+        margin-top: 1em; 
+    }
+</style>
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Keyscapes</title>
-
-    <link rel="stylesheet" href="css/style.css"/>
-
-    <link rel="icon" href="images/Keyscapes-logo.png"/>
-    <bgsound src="https://cdn.discordapp.com/attachments/1037680243571425280/1053315022018855032/WTF.mp3" loop="infinite">
-
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-    <script src="js/jquery-3.6.0.min.js"></script>
-
-    <script src="js/jquery.waypoints.min.js"></script>
-
-    <script src="js/owl.carousel.min.js"></script>
-
-    <script src="js/typed.min.js"></script>
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css"/>
-
-    <link rel="stylesheet" type="text/css" href="./aos/aos.css" />
-
-    <meta property="og:type" content="website" />
-
-    <meta property="og:title" content="Keyscapes" />
-
-    <meta
-      property="og:description"
-      content="Un bot d'escape game pleinement fonctionnel sur Discord ?
-      Vous ne me croirez pas, venez essayer par vous-même !"
-    />
-
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1238546039187701830/1238931836626014320/keyscape-logo.png"/>
-
-    <meta name="theme-color" content="#FFFFFF" />
-  </head>
-
-  <body>
-    <div id="particles-js"></div>
-
-    <div class="scroll-up-btn">
-      <i>↑</i>
+<article>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202.24 202.24"><defs><style>.cls-1{fill:#fff;}</style></defs><title>Asset 3</title><g id="Layer_2" data-name="Layer 2"><g id="Capa_1" data-name="Capa 1"><path class="cls-1" d="M101.12,0A101.12,101.12,0,1,0,202.24,101.12,101.12,101.12,0,0,0,101.12,0ZM159,148.76H43.28a11.57,11.57,0,0,1-10-17.34L91.09,31.16a11.57,11.57,0,0,1,20.06,0L169,131.43a11.57,11.57,0,0,1-10,17.34Z"/><path class="cls-1" d="M101.12,36.93h0L43.27,137.21H159L101.13,36.94Zm0,88.7a7.71,7.71,0,1,1,7.71-7.71A7.71,7.71,0,0,1,101.12,125.63Zm7.71-50.13a7.56,7.56,0,0,1-.11,1.3l-3.8,22.49a3.86,3.86,0,0,1-7.61,0l-3.8-22.49a8,8,0,0,1-.11-1.3,7.71,7.71,0,1,1,15.43,0Z"/></g></g></svg>
+    <h1>We&rsquo;ll be back soon!</h1>
+    <div>
+        <p>Sorry for the inconvenience. We&rsquo;re performing some maintenance at the moment. If you need to you can always join us on <a href="http://discord.gg/NskzPnm5nq">Discord</a> for updates, otherwise we&rsquo;ll be back up shortly!</p>
+        <p>&mdash; The Keyscapes Team</p>
     </div>
-
-    <nav class="navbar">
-      <div class="max-width">
-        <div class="logo">
-          <a href="https://www.keyscapes.fr">Keyscapes<span></span></a>
-        </div>
-
-        <ul class="menu">
-          <li><a href="https://www.keyscapes.fr" class="menu-btn">Accueil</a></li>
-
-          <li>
-            <a href="#features" class="menu-btn" class="menu-btn">Fonctionnalités</a>
-          </li>
-
-          <li><a href="#stats" class="menu-btn">Statistiques</a></li>
-
-          <li><a href="#contributors" class="menu-btn">Team</a></li>
-
-          <li><a href="https://www.keyscapes.fr/discord" class="menu-btn">Support</a></li>
-
-        </ul>
-
-        <div class="menu-btn">
-          <i class="fas fa-bars"></i>
-        </div>
-      </div>
-    </nav>
-
-    <section class="home" id="home">
-      <div class="max-width">
-        <div class="home-content">
-          <div class="text-1">Salut !</div>
-
-          <div class="text-3">Je suis <span class="typing"></span></div>
-
-          <a class="this-is-pain" href="https://www.keyscapes.fr/invite">Invitez moi!</a>
-          
-        </div>
-      </div>
-    </section>
-
-    <section class="features" id="features">
-      <div class="max-width">
-        <h2 class="title">Mes fonctionnalités</h2>
-
-        <div class="features-content">
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-cogs"></i>
-
-              <div class="text">Interactif</div>
-
-              <p>
-                Keyscapes est un bot interactif vous permettant de transformer vos serveurs en un rien de temps ! 
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-arrow-up"></i>
-
-              <div class="text">Coopération</div>
-
-              <p>
-                Avec Keyscapes, il est possible de vivre une aventure entre amis sur nos Escape Games !
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-code"></i>
-
-              <div class="text">Créatif</div>
-
-              <p>
-                Keyscapes dispose d'un système innovant visant à être amélioré de jour en jour grâce à la communauté !
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="stats" id="stats">
-      <div class="max-width">
-        <h2 class="title">
-            Mes Statistiques
-        </h2>
-
-        <div class="stats-content">
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-server"></i>
-
-              <div class="text">Serveurs</div>
-
-              <p>8</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-user"></i>
-
-              <div class="text">Utilisateurs</div>
-
-              <p>x</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-terminal"></i>
-
-              <div class="text">Escapes Games</div>
-
-              <p>1</p>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contributors" id="contributors">
-      <div class="max-width">
-          <h2 class="title">
-            Team
-          </h2>
-          <div class="carousel owl-carousel">
-            
-            <div class="cardd">
-                  <div class="boxx">
-                      <img src="https://cdn.discordapp.com/avatars/788100641473167360/b4f97bad1f2ae18acae178067c244701.png" alt>
-                      <div class="text">@kucoo_</div>
-                      <p>
-                          <button class="badges owner">Créateur</button>
-                          <button class="badges developer">Développeur</button>
-                      </p>
-                  </div>
-              </div>
-            <div class="cardd">
-                  <div class="boxx">
-                      <img src="https://cdn.discordapp.com/avatars/1040681761295843488/fbeed30723f711f589f6eb3b861afb53.png" alt>
-                      <div class="text">@obvnever</div>
-                      <p>
-                        <button class="badges admin">Administrateur</button>
-                        <button class="badges pmt">Project Master</button>
-                      </p>
-                  </div>
-              </div>
-            <div class="cardd">
-                  <div class="boxx">
-                      <img src="https://cdn.discordapp.com/avatars/926084612097191965/1af4fb712730d9b89e8a62257e09fa8a.png" alt>
-                      <div class="text">@oxl.667</div>
-                      <p>
-                        <button class="badges admin">Administrateur</button>
-                        <button class="badges beta">Bêta Testeur</button>
-                      </p>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </section>
-    
-    <script type="text/javascript">
-      AOS.init({
-        duration: 1000
-      });
-    </script>
-
-    <script src="js/script.js"></script>
-
-    <script>
-      $(window).on("load", function() {
-        $(".loader-wrapper").fadeOut("slow");
-      });
-    </script>
-
-    <script src="./particles/particles.js"></script>
-
-    <script src="./particles/app.js"></script>
-  </body>
-  <footer>
-    <p>Made with ❤️ by @kucoo_</p>
-    <p>Copyright © 2024 | Keyscapes</p>
-    <a href="https://www.keyscapes.fr/privacy">Privacy Policy</a> <strong>|</strong> <a href="https://www.keyscapes.fr/terms">Terms Of Service</a>
-  </footer>
-</html>
+</article>
