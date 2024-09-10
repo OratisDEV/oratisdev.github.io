@@ -24,7 +24,7 @@ $(document).ready(function() {
   var typed = new Typed('.typing', {
     strings: [
       "Keyscapes",
-      "des développeurs passionés",
+      "passionées!",
     ],
     typeSpeed: 130,
     backSpeed: 90,
