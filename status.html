@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Keyscapes Studio Status</title>
+        <style>
+            body {
+                background-color: #222;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                color: #fff;
+            }
+
+            .container {
+                text-align: center;
+            }
+
+            .status {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                animation: pulse 2s infinite;
+                margin: 10px auto;
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(0.95);
+                    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+                }
+
+                70% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+                }
+
+                100% {
+                    transform: scale(0.95);
+                    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+                }
+            }
+
+            h1, h2 {
+                color: #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Service Status</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Service</th>
+                        <th>Last ping</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="status" title="Service is up" style="background-color: green;"></div>
+                        </td>
+                        <td>
+                            <p><b>Keyscapes</b></p>
+                        </td>
+                        <td>
+                            <p>1 hour ago</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="status" title="Service is up" style="background-color: green;"></div>
+                        </td>
+                        <td>
+                            <p><b>Keyscapes.fr</b></p>
+                        </td>
+                        <td>
+                            <p>30 min ago</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="status" title="Service is up" style="background-color: green;"></div>
+                        </td>
+                        <td>
+                            <p><b>BitsDefender</b></p>
+                        </td>
+                        <td>
+                            <p>1 hour ago</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="status" title="Service is up" style="background-color: green;"></div>
+                        </td>
+                        <td>
+                            <p><b>SteamIdle</b></p>
+                        </td>
+                        <td>
+                            <p>10 min ago</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="status" title="Service is down" style="background-color: red;"></div>
+                        </td>
+                        <td>
+                            <p><b>SpaceDam</b></p>
+                        </td>
+                        <td>
+                            <p>3 months ago</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="status" title="Service is discontinued" style="background-color: black;"></div>
+                        </td>
+                        <td>
+                            <p><b>K' Gestion</b></p>
+                        </td>
+                        <td>
+                            <p>Discontinued</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="status" title="Service is discontinued" style="background-color: black;"></div>
+                        </td>
+                        <td>
+                            <p><b>K' Coins</b></p>
+                        </td>
+                        <td>
+                            <p>Discontinued</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
