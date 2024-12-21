@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation ORATIS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2E7D32;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+        }
+
+        section code {
+            display: block;
+            background: #f4f4f9;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            white-space: pre-wrap;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #666;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Documentation ORATIS</h1>
+        <nav>
+            <a href="#installation">Installation</a>
+            <a href="#utilisation">Utilisation</a>
+            <a href="#modules">Modules</a>
+            <a href="#details">Détails Techniques</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="installation">
+            <h2>Installation</h2>
+            <p>Pour installer ORATIS, suivez les étapes ci-dessous :</p>
+            <ol>
+                <li>Clonez le dépôt :</li>
+                <code>git clone <URL_DU_DEPOT></code>
+                <li>Accédez au répertoire :</li>
+                <code>cd ORATIS</code>
+                <li>Installez les dépendances :</li>
+                <code>pip install -r requirements.txt</code>
+                <li>Assurez-vous que Python 3.8 ou une version ultérieure est installé.</li>
+            </ol>
+        </section>
+
+        <section id="utilisation">
+            <h2>Utilisation</h2>
+            <p>Voici comment utiliser le pipeline ORATIS :</p>
+            <ol>
+                <li>Placez vos fichiers audio bruts dans le dossier <code>data/raw</code>.</li>
+                <li>Lancez le script principal :</li>
+                <code>python main.py --segment yes</code>
+                <p>Options disponibles :</p>
+                <ul>
+                    <li><code>--segment yes</code> : Segmente les fichiers audio en portions de 30 secondes.</li>
+                    <li><code>--segment no</code> : Utilise les fichiers audio dans leur intégralité.</li>
+                </ul>
+            </ol>
+        </section>
+
+        <section id="modules">
+            <h2>Modules</h2>
+
+            <h3>Prétraitement</h3>
+            <p>Le module de prétraitement nettoie et normalise les fichiers audio :</p>
+            <ul>
+                <li>Convertit les fichiers en mono.</li>
+                <li>Rééchantillonne à 16kHz.</li>
+                <li>Optionnel : Segmente les fichiers en morceaux de 30 secondes.</li>
+            </ul>
+            <code>python scripts/preprocess.py --segment yes</code>
+
+            <h3>Extraction des caractéristiques</h3>
+            <p>Ce module extrait des MFCCs (Mel Frequency Cepstral Coefficients) pour représenter les données audio :</p>
+            <ul>
+                <li>Utilise la bibliothèque <code>librosa</code>.</li>
+                <li>Extrait 13 coefficients par fenêtre temporelle.</li>
+            </ul>
+            <code>python scripts/extract_features.py</code>
+
+            <h3>Entraînement du modèle</h3>
+            <p>Ce module entraîne un modèle LSTM :</p>
+            <ul>
+                <li>Prend en entrée les MFCCs extraits.</li>
+                <li>Utilise une loss CTC (Connectionist Temporal Classification).</li>
+                <li>Enregistre le modèle dans le dossier <code>models</code>.</li>
+            </ul>
+            <code>python scripts/train_model.py</code>
+
+            <h3>Décodage</h3>
+            <p>Ce module utilise le modèle entraîné pour transcrire des fichiers audio :</p>
+            <ul>
+                <li>Charge les MFCCs des fichiers audio.</li>
+                <li>Applique le modèle pour produire une séquence de caractères.</li>
+            </ul>
+            <code>python scripts/decode_audio.py</code>
+
+            <h3>Évaluation</h3>
+            <p>Ce module évalue les transcriptions avec des métriques :</p>
+            <ul>
+                <li><strong>WER</strong> (Word Error Rate).</li>
+                <li><strong>CER</strong> (Character Error Rate).</li>
+            </ul>
+            <code>python scripts/evaluate.py</code>
+        </section>
+
+        <section id="details">
+            <h2>Détails Techniques</h2>
+
+            <h3>Pipeline Principal</h3>
+            <p>Le script principal <code>main.py</code> exécute le pipeline complet :</p>
+            <code>
+from scripts import preprocess, extract_features, train_model, decode_audio, evaluate
+
+preprocess(config, segment_audio=True)
+extract_features(config)
+train_model(config)
+decode_audio(config)
+evaluate(config)
+            </code>
+            <p>Chaque étape est modulable et peut être utilisée indépendamment.</p>
+
+            <h3>Configuration</h3>
+            <p>Les chemins et paramètres sont définis dans <code>config.yaml</code> :</p>
+            <code>
+paths:
+  raw_audio: "data/raw"
+  processed_audio: "data/processed"
+  transcripts: "data/transcripts"
+  features: "features"
+  models: "models/trained_model.pth"
+  decoded_texts: "results/decoded_texts"
+
+training:
+  batch_size: 32
+  epochs: 20
+  learning_rate: 0.001
+  input_dim: 13
+  hidden_dim: 128
+  output_dim: 29
+            </code>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Pour toute question ou assistance, contactez-nous via notre dépôt GitHub :</p>
+            <p><a href="https://github.com">https://github.com</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 ORATIS - Tous droits réservés. Consultez notre <a href="#">documentation complète</a>.</p>
+    </footer>
+</body>
+</html>

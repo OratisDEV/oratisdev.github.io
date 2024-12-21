@@ -1,244 +1,275 @@
 <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORATIS - ASR Pipeline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+        }
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        header {
+            background: linear-gradient(90deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    <title>Keyscapes Studio</title>
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
 
-    <link rel="stylesheet" href="css/style.css"/>
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
 
-    <link
-      
-      rel="icon"
-      href="images/keyscape-logo.png"
-    />
-    <bgsound src="https://cdn.discordapp.com/attachments/1037680243571425280/1053315022018855032/WTF.mp3" loop="infinite">
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease-in-out;
+        }
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        .nav-links li a:hover {
+            color: #c8f7c5;
+        }
 
-    <script src="js/jquery-3.6.0.min.js"></script>
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(45deg, #4CAF50, #81C784);
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
 
-    <script src="js/jquery.waypoints.min.js"></script>
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
 
-    <script src="js/owl.carousel.min.js"></script>
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
 
-    <script src="js/typed.min.js"></script>
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #4CAF50;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css"/>
+        .btn:hover {
+            background: #4CAF50;
+            color: white;
+            transform: scale(1.1);
+        }
 
-    <link rel="stylesheet" type="text/css" href="./aos/aos.css" />
+        section {
+            padding: 3rem 1.5rem;
+            max-width: 1200px;
+            margin: auto;
+        }
 
-    <meta property="og:type" content="website" />
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
 
-    <meta property="og:title" content="Keyscapes Studio" />
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    <meta
-      property="og:description"
-      content="Keyscapes Studio est une petite équipe de développement basé sur plusieurs support et langage de programmation.\nProjet en cours: Keyscapes, BitsDefender"
-    />
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
-    <meta property="og:image" content="https://cdn.discordapp.com/avatars/1057093295622328431/fddffb7c08dcc6eac3d823fe19ca383b.png"/>
+        .feature-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+        }
 
-    <meta name="theme-color" content="#ffffff" />
-  </head>
+        .feature-content {
+            flex: 1;
+        }
 
-  <body>
-    <div id="particles-js"></div>
+        .feature-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #4CAF50;
+        }
 
-    <div class="scroll-up-btn">
-      <i>↑</i>
-    </div>
+        .feature-content p {
+            font-size: 1rem;
+            color: #555;
+        }
 
-    <nav class="navbar">
-      <div class="max-width">
-        <div class="logo">
-          <a href="#home">Keyscapes<span></span></a>
-        </div>
+        .documentation-contact {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
 
-        <ul class="menu">
-          <li><a href="https://www.keyscapes.fr" class="menu-btn">Accueil</a></li>
+        .documentation, .contact {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-          <li>
-            <a href="#features" class="menu-btn" class="menu-btn">Projets</a>
-          </li>
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #2E7D32;
+            color: white;
+            margin-top: 2rem;
+        }
 
-          <li><a href="#stats" class="menu-btn">Statistiques</a></li>
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-          <li><a href="#contributors" class="menu-btn">Équipe</a></li>
+            .hero p {
+                font-size: 1.2rem;
+            }
 
-          <li><a href="https://www.keyscapes.fr/discord" class="menu-btn">Support</a></li>
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
 
-          <li><a href="https://www.keyscapes.fr/status" class="menu-btn">Status</a></li>
-        </ul>
+            .features {
+                flex-direction: column;
+            }
 
-        <div class="menu-btn">
-          <i class="fas fa-bars"></i>
-        </div>
-      </div>
-    </nav>
+            .documentation-contact {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ORATIS</div>
+            <ul class="nav-links">
+                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section class="home" id="home">
-      <div class="max-width">
-        <div class="home-content">
-          <div class="text-1">Bonjour !</div>
+    <main>
+        <section class="hero">
+            <h1>ORATIS</h1>
+            <p>Un pipeline complet pour la reconnaissance vocale automatique.</p>
+            <a href="#features" class="btn">En savoir plus</a>
+        </section>
 
-          <div class="text-3">Nous sommes <span class="typing"></span></div>
-
-          <a class="this-is-pain" href="https://www.keyscapes.fr/status">Le statut de nos projets !</a>
-          
-        </div>
-      </div>
-    </section>
-
-    <section class="features" id="features">
-      <div class="max-width">
-        <h2 class="title">Nos projets</h2>
-
-        <div class="features-content">
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-cogs"></i>
-
-              <div class="text">Keyscapes</div>
-
-              <p>
-                Keyscape est un bot intéractif vous permettant de faire des Escapes Games directement sur Discord ! 
-              </p>
+        <section id="features" class="features">
+            <h2>Fonctionnalités principales</h2>
+            <div class="feature">
+                <div class="feature-icon">🔧</div>
+                <div class="feature-content">
+                    <h3>Prétraitement</h3>
+                    <p>Nettoyage et segmentation des fichiers audio pour une meilleure précision.</p>
+                </div>
             </div>
-          </div>
-
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-arrow-up"></i>
-
-              <div class="text">BitsDefender</div>
-
-              <p>
-                BitsDefender est un bot de protection avancé vous permettant de protèger vos serveurs d'attaques multiples.
-              </p>
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <div class="feature-content">
+                    <h3>Extraction des caractéristiques</h3>
+                    <p>Utilisation de MFCCs pour des représentations optimisées.</p>
+                </div>
             </div>
-          </div>
-
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-code"></i>
-
-              <div class="text">Bientôt...</div>
-
-              <p>
-                Nous travaillons actuellement sur d'autres projets qui seront dévoilés plus tard !
-              </p>
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-content">
+                    <h3>Modèle LSTM</h3>
+                    <p>Un modèle entraîné pour convertir des données audio en texte.</p>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="stats" id="stats">
-      <div class="max-width">
-        <h2 class="title">
-          Mes Statistiques
-        </h2>
-
-        <div class="stats-content">
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-server"></i>
-
-              <div class="text">Serveurs</div>
-
-              <p>50 protégés</p>
+            <div class="feature">
+                <div class="feature-icon">✔️</div>
+                <div class="feature-content">
+                    <h3>Évaluation</h3>
+                    <p>Analyse des performances avec des métriques comme WER et CER.</p>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-user"></i>
+        <section class="documentation-contact">
+            <section id="documentation" class="documentation">
+                <h2>Documentation</h2>
+                <p>Consultez la documentation complète pour apprendre comment utiliser ORATIS dans vos projets.</p>
+                <a href="#" class="btn">Voir la documentation</a>
+            </section>
 
-              <div class="text">Utilisateurs</div>
+            <section id="contact" class="contact">
+                <h2>Contact</h2>
+                <p>Pour plus d'informations, contactez-nous ou visitez notre dépôt GitHub.</p>
+                <a href="https://github.com/KucoDEV/Oratis" class="btn">Voir sur GitHub</a>
+            </section>
+        </section>
+    </main>
 
-              <p>undefined</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="box">
-              <i class="fas fa-terminal"></i>
-
-              <div class="text">Escapes Games</div>
-
-              <p>785 lancés</p>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contributors" id="contributors">
-      <div class="max-width">
-          <h2 class="title">
-              Équipe
-          </h2>
-          <div class="carousel owl-carousel">
-            
-            <div class="cardd">
-                  <div class="boxx">
-                      <img src="https://cdn.discordapp.com/avatars/788100641473167360/0adf4f312cf6e49bee340c5e4084eb57.webp?size=80" alt>
-                      <div class="text">Kuco (@kucoo_)</div>
-                      <p>
-                          <button class="badges developer">Développeur</button>
-                      </p>
-                  </div>
-              </div>
-            <div class="cardd">
-                  <div class="boxx">
-                      <img src="https://cdn.discordapp.com/avatars/926084612097191965/1af4fb712730d9b89e8a62257e09fa8a.webp?size=80" alt>
-                      <div class="text">OXL (@oxl.667)</div>
-                      <p>
-                          <button class="badges admin">Administrateur</button>
-                      </p>
-                  </div>
-              </div>
-            <div class="cardd">
-                  <div class="boxx">
-                      <img src="https://cdn.discordapp.com/avatars/1040681761295843488/fbeed30723f711f589f6eb3b861afb53.webp?size=80" alt>
-                      <div class="text">obvNever (@obvnever)</div>
-                      <p>
-                          <button class="badges pmt">Project Master</button>
-                      </p>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </section>
-    
-    <script type="text/javascript">
-      AOS.init({
-        duration: 1000
-      });
-    </script>
-
-    <script src="js/script.js"></script>
+    <footer>
+        <p>© 2024 ORATIS - Tous droits réservés.</p>
+    </footer>
 
     <script>
-      $(window).on("load", function() {
-        $(".loader-wrapper").fadeOut("slow");
-      });
+        // JavaScript Interactions
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
-
-    <script src="./particles/particles.js"></script>
-
-    <script src="./particles/app.js"></script>
-  </body>
-  <footer>
-    <p>Made with ❤️ by Kuco</p>
-    <p>Copyright © 2023-2024 | Keyscapes</p>
-    <a href="https://www.keyscapes.fr/privacy">Privacy Policy</a> <strong>|</strong> <a href="https://www.keyscapes.fr/terms">Terms Of Service</a>
-  </footer>
+</body>
 </html>
