@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation ORATIS</title>
+    <title>ORATIS - ASR Pipeline</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* Reset CSS */
@@ -16,9 +16,26 @@
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f9;
+            color: #f4f4f9;
+            background-color: #121212;
             padding: 2rem;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #81C784;
         }
 
         header {
@@ -44,15 +61,15 @@
         }
 
         nav a:hover {
-            color: #2E7D32;
+            color: #81C784;
         }
 
         section {
             margin-bottom: 3rem;
             padding: 2rem;
-            background: white;
+            background: #1e1e1e;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
         section h2 {
@@ -63,33 +80,41 @@
 
         section p {
             margin-bottom: 1rem;
+            color: #e0e0e0;
         }
 
         section code {
             display: block;
-            background: #f4f4f9;
-            border: 1px solid #ddd;
+            background: #2e2e2e;
+            border: 1px solid #444;
             padding: 1rem;
             border-radius: 5px;
             margin-bottom: 1rem;
             white-space: pre-wrap;
+            color: #81C784;
         }
 
         footer {
             text-align: center;
             margin-top: 3rem;
-            color: #666;
+            color: #e0e0e0;
         }
 
         footer a {
             color: #4CAF50;
             text-decoration: none;
         }
+
+        .warning {
+            color: #FF9800;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Documentation ORATIS</h1>
+        <h1>Documentation</h1>
         <nav>
             <a href="#installation">Installation</a>
             <a href="#utilisation">Utilisation</a>
@@ -104,7 +129,7 @@
             <h2>Installation</h2>
             <p>Pour installer ORATIS, suivez les étapes ci-dessous :</p>
             <ol>
-                <li>Clonez le dépôt :</li>
+                <li>Clonez le dépôt ou téléchargez-le directement :</li>
                 <code>git clone <URL_DU_DEPOT></code>
                 <li>Accédez au répertoire :</li>
                 <code>cd ORATIS</code>
@@ -117,14 +142,18 @@
         <section id="utilisation">
             <h2>Utilisation</h2>
             <p>Voici comment utiliser le pipeline ORATIS :</p>
+            <p><strong>Important :</strong> Le modèle est fourni sans données préalablement entraînées. Vous devez lui apprendre à partir de vos propres fichiers audio et transcriptions.</p>
             <ol>
-                <li>Placez vos fichiers audio bruts dans le dossier <code>data/raw</code>.</li>
-                <li>Lancez le script principal :</li>
-                <code>python main.py --segment yes</code>
-                <p>Options disponibles :</p>
+                <li>Placez vos fichiers audio (formats supportés : .wav ou .mp3) dans le dossier : <code>data/raw</code></li>
+                <li>Créez des fichiers de retranscriptions correspondants avec exactement le même nom que les fichiers audio dans : <code>data/transcripts</code> </li>
+                <li>Lancez le pipeline pour préparer et entraîner le modèle :</li>
+                <code>python main.py</code>
+                <p class="warning">Attention : Assurez-vous que chaque fichier audio a une retranscription correspondante pour éviter des erreurs.</p>
+                <h3>Options disponibles :</h3>
                 <ul>
-                    <li><code>--segment yes</code> : Segmente les fichiers audio en portions de 30 secondes.</li>
-                    <li><code>--segment no</code> : Utilise les fichiers audio dans leur intégralité.</li>
+                    <li>Segmente les fichiers audio en portions de 30 secondes. <code>--segment yes</code></li>
+                    <p class="warning">Attention : L'option peut rencontrer des problèmes ou produire des résultats inattendus. Utilisez avec précaution.</p>
+                    <li>Utilise les fichiers audio dans leur intégralité. <code>--segment no</code></li>
                 </ul>
             </ol>
         </section>
@@ -144,7 +173,7 @@
             <h3>Extraction des caractéristiques</h3>
             <p>Ce module extrait des MFCCs (Mel Frequency Cepstral Coefficients) pour représenter les données audio :</p>
             <ul>
-                <li>Utilise la bibliothèque <code>librosa</code>.</li>
+                <li>Utilise la bibliothèque <code>librosa</code></li>
                 <li>Extrait 13 coefficients par fenêtre temporelle.</li>
             </ul>
             <code>python scripts/extract_features.py</code>
@@ -154,7 +183,7 @@
             <ul>
                 <li>Prend en entrée les MFCCs extraits.</li>
                 <li>Utilise une loss CTC (Connectionist Temporal Classification).</li>
-                <li>Enregistre le modèle dans le dossier <code>models</code>.</li>
+                <li>Enregistre le modèle dans le dossier. <code>models</code></li>
             </ul>
             <code>python scripts/train_model.py</code>
 
@@ -180,21 +209,18 @@
 
             <h3>Pipeline Principal</h3>
             <p>Le script principal <code>main.py</code> exécute le pipeline complet :</p>
-            <code>
-from scripts import preprocess, extract_features, train_model, decode_audio, evaluate
+            <code>from scripts import preprocess, extract_features, train_model, decode_audio, evaluate
 
 preprocess(config, segment_audio=True)
 extract_features(config)
 train_model(config)
 decode_audio(config)
-evaluate(config)
-            </code>
+evaluate(config)</code>
             <p>Chaque étape est modulable et peut être utilisée indépendamment.</p>
 
             <h3>Configuration</h3>
-            <p>Les chemins et paramètres sont définis dans <code>config.yaml</code> :</p>
-            <code>
-paths:
+            <p>Les chemins et paramètres sont définis dans : <code>config.yaml</code></p>
+            <code>paths:
   raw_audio: "data/raw"
   processed_audio: "data/processed"
   transcripts: "data/transcripts"
@@ -208,19 +234,17 @@ training:
   learning_rate: 0.001
   input_dim: 13
   hidden_dim: 128
-  output_dim: 29
-            </code>
+  output_dim: 29</code>
         </section>
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>Pour toute question ou assistance, contactez-nous via notre dépôt GitHub :</p>
-            <p><a href="https://github.com">https://github.com</a></p>
+            <p>Pour toute question ou assistance, contactez-nous via notre <a href="https://github.com/KucoDEV/Oratis">dépôt GitHub</a></p>
         </section>
     </main>
 
     <footer>
-        <p>© 2024 ORATIS - Tous droits réservés. Consultez notre <a href="#">documentation complète</a>.</p>
+        <p>© 2024 <a href="https://www.oratis.fr">ORATIS</a> - Tous droits réservés.</p>
     </footer>
 </body>
 </html>
