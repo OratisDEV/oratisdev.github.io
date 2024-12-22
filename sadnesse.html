@@ -9,7 +9,7 @@
     <meta property="og:description" content="Visit SadNesse website! <br> SadNesse is a friend of the ORATIS group">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.oratis.fr">
-    <meta property="og:image" content="https://www.oratis.fr/assets/sadnesse.gif">
+    <meta property="og:image" content="https://www.oratis.fr/assets/profile.gif">
     <link rel="icon" type="image/png" href="assets/sadnesse.png" />
     <style>
         * {
@@ -71,8 +71,6 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            backdrop-filter: blur(10px);
-            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 15px;
             width: 90%;
@@ -281,9 +279,7 @@
             </div>
         </div>
         <div class="icons">
-            <a target="_blank" href="https://steamcommunity.com/id/biensoineedesilestropicales"><img src="assets/steam.png" alt="Steam"></a>
             <a target="_blank" href="https://www.oratis.fr/"><img src="assets/oratis.png" alt="Oratis"></a>
-            <a target="_blank" href="https://github.com/KucoDEV"><img src="assets/github.png" alt="GitHub"></a>
         </div>
     </div>
 
@@ -294,8 +290,7 @@
     
 
     <video id="background-video" loop muted>
-        <source src="assets/background_sad.mp4" type="video/quicktime">
-        <source src="assets/background_sad.mov" type="video/mp4">
+        <source src="assets/nap.mp4" type="video/quicktime">
         Your browser does not support the video tag.
     </video>
      
@@ -305,40 +300,34 @@
         const video = document.getElementById('background-video');
         const volumeIcon = document.getElementById('volume-icon');
         const volumeSlider = document.getElementById('volume');
-        const audio = document.getElementById('background-audio');
-
+        
         function startVideo() {
             overlay.classList.add('hidden');
             video.muted = false;
             video.play();
-            audio.play();
         }
 
         window.onload = () => {
             const savedVolume = localStorage.getItem('volume') || 1;
             video.volume = savedVolume;
-            audio.volume = savedVolume;
             volumeSlider.value = savedVolume;
             volumeIcon.src = savedVolume > 0 ? 'assets/vol_on.png' : 'assets/vol_off.png';
         };
 
         function setVolume(value) {
             video.volume = value;
-            audio.volume = value;
             localStorage.setItem('volume', value);
             volumeIcon.src = value > 0 ? 'assets/vol_on.png' : 'assets/vol_off.png';
         }
 
         function toggleMute() {
-            if (video.volume > 0 || audio.volume > 0) {
+            if (video.volume > 0) {
                 video.volume = 0;
-                audio.volume = 0;
                 localStorage.setItem('volume', 0);
                 volumeIcon.src = 'assets/vol_off.png';
                 volumeSlider.value = 0;
             } else {
                 video.volume = 1;
-                audio.volume = 1;
                 localStorage.setItem('volume', 1);
                 volumeIcon.src = 'assets/vol_on.png';
                 volumeSlider.value = 1;
