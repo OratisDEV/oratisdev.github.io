@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.4);
+        }
+
+        .badge-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .badge-container::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .badge-container:hover::after {
+            opacity: 1;
+        }
+
+        .profile-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .username {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .profile-details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .profile-details img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .profile-details img:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+
+        .icons img:hover {
+            transform: scale(1.2);
+        }
+
+        .additional-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .additional-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .volume-control {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 10px;
+        }
+
+        .volume-control img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .volume-bar {
+            max-width: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-width 0.3s ease, opacity 0.3s ease;
+        }
+
+        .volume-control:hover .volume-bar {
+            max-width: 150px;
+            opacity: 1;
+        }
+
+        .volume-bar input {
+            width: 150px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            height: 8px;
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        .volume-bar input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .volume-bar input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="volume-control">
+        <img id="volume-icon" src="assets/vol_on.png" alt="Volume" onclick="toggleMute()">
+        <div class="volume-bar">
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1" oninput="setVolume(this.value)">
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-picture">
+            <img src="assets/profile.gif" alt="Profile Picture">
+        </div>
+        <div class="username">Kuco</div>
+        <div class="profile-details">
+            <img src="assets/profile.gif" alt="User Avatar" data-tooltip="User Avatar Tooltip">
+            <span>@kucoo_</span>
+            
+            <div class="badge-container" data-tooltip="HypeSquad Balance">
+                <img src="assets/hype.png" alt="Badge">
+            </div>
+            <div class="badge-container" data-tooltip="Active Developer">
+                <img src="assets/dev.png" alt="Badge">
+            </div>
+            <div class="badge-container" data-tooltip="Discord Nitro">
+                <img src="assets/nitro.png" alt="Badge">
+            </div>
+        </div>
+        <div class="icons">
+            <a target="_blank" href="https://steamcommunity.com/id/kucofps/"><img src="assets/steam.png" alt="Steam"></a>
+            <a target="_blank" href="https://www.oratis.fr/"><img src="assets/oratis.png" alt="Oratis"></a>
+            <a target="_blank" href="https://github.com/KucoDEV"><img src="assets/github.png" alt="GitHub"></a>
+        </div>
+    </div>
+
+    <video id="background-video" autoplay loop>
+        <source src="assets/background.mov" type="video/quicktime">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        const video = document.getElementById('background-video');
+        const volumeIcon = document.getElementById('volume-icon');
+        const volumeSlider = document.getElementById('volume');
+
+        window.onload = () => {
+            const savedVolume = localStorage.getItem('volume') || 1;
+            video.volume = savedVolume;
+            volumeSlider.value = savedVolume;
+            volumeIcon.src = savedVolume > 0 ? 'assets/vol_on.png' : 'assets/vol_off.png';
+        };
+
+        function setVolume(value) {
+            video.volume = value;
+            localStorage.setItem('volume', value);
+            volumeIcon.src = value > 0 ? 'assets/vol_on.png' : 'assets/vol_off.png';
+        }
+
+        function toggleMute() {
+            if (video.volume > 0) {
+                video.volume = 0;
+                localStorage.setItem('volume', 0);
+                volumeIcon.src = 'assets/vol_off.png';
+                volumeSlider.value = 0;
+            } else {
+                video.volume = 1;
+                localStorage.setItem('volume', 1);
+                volumeIcon.src = 'assets/vol_on.png';
+                volumeSlider.value = 1;
+            }
+        }
+    </script>
+</body>
+</html>
