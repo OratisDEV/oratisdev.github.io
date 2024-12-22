@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORATIS - ASR Pipeline</title>
-    <meta name="description" content="ORATIS - Un pipeline complet pour la reconnaissance vocale automatique. Découvrez comment convertir des fichiers audio en texte avec précision et flexibilité.">
-    <meta property="og:title" content="ORATIS - Reconnaissance vocale automatique">
-    <meta property="og:description" content="Un pipeline puissant pour transformer des fichiers audio en texte. Parfait pour les développeurs et les chercheurs.">
+    <title>ORATIS</title>
+    <meta name="description" content="ORATIS - Un groupe de développement créatif, innovant, offrant des solutions technologiques avancées, dont des projets comme Oratis AI, Keyscapes, et BitsDefender.">
+    <meta property="og:title" content="ORATIS - Groupe de Développement">
+    <meta property="og:description" content="Explorez les projets du groupe de développement ORATIS : Oratis AI, Keyscapes, et BitsDefender. Technologie, innovation et créativité au service des utilisateurs.">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" href="assets/oratis.png" />
     <meta property="og:url" content="https://www.oratis.fr">
-    <meta property="og:image" content="https://www.oratis.fr/assets/oratis.png>
+    <meta property="og:image" content="https://www.oratis.fr/assets/oratis.png">
+    <link rel="icon" type="image/png" href="assets/oratis.png" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -106,61 +106,34 @@
             margin: auto;
         }
 
-        .features {
-            display: flex;
-            flex-direction: column;
+        .projects {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            justify-items: center;
         }
 
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
+        .project-card {
             background: white;
-            padding: 2rem;
             border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .feature:hover {
-            transform: translateY(-5px);
+        .project-card:hover {
+            transform: translateY(-10px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .feature-icon {
-            font-size: 3rem;
-            color: #4CAF50;
-        }
-
-        .feature-content {
-            flex: 1;
-        }
-
-        .feature-content h3 {
+        .project-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 0.5rem;
             color: #4CAF50;
+            margin-bottom: 1rem;
         }
 
-        .feature-content p {
-            font-size: 1rem;
+        .project-card p {
             color: #555;
-        }
-
-        .documentation-contact {
-            display: flex;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        .documentation, .contact {
-            flex: 1;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         footer {
@@ -187,29 +160,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #81C784;
         }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .features {
-                flex-direction: column;
-            }
-
-            .documentation-contact {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 <body>
@@ -217,9 +167,9 @@
         <nav>
             <div class="logo">ORATIS</div>
             <ul class="nav-links">
-                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#projects">Projets</a></li>
                 <li><a href="https://www.oratis.fr/docs">Documentation</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -227,72 +177,38 @@
     <main>
         <section class="hero">
             <h1>ORATIS</h1>
-            <p>Un pipeline complet pour la reconnaissance vocale automatique.</p>
-            <a href="#features" class="btn">En savoir plus</a>
+            <p>Un groupe de développement créatif, innovant, au service de la technologie et des utilisateurs.</p>
         </section>
 
-        <section id="features" class="features">
-            <h2>Fonctionnalités principales</h2>
-            <div class="feature">
-                <div class="feature-icon">🔧</div>
-                <div class="feature-content">
-                    <h3>Prétraitement</h3>
-                    <p>Nettoyage et segmentation des fichiers audio pour une meilleure précision.</p>
-                </div>
+        <section id="about">
+            <h2>À propos</h2>
+            <p>ORATIS est un groupe de développement dédié à la création de solutions technologiques avancées. Notre mission est d'innover et de proposer des outils modernes répondant aux besoins de nos clients.</p>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>Nos Projets</h2>
+            <div class="project-card">
+                <h3>Oratis AI</h3>
+                <p>Un pipeline complet pour la reconnaissance vocale automatique, intégrant prétraitement, extraction des caractéristiques, entraînement de modèle et évaluation.</p>
             </div>
-            <div class="feature">
-                <div class="feature-icon">📈</div>
-                <div class="feature-content">
-                    <h3>Extraction des caractéristiques</h3>
-                    <p>Utilisation de MFCCs pour des représentations optimisées.</p>
-                </div>
+            <div class="project-card">
+                <h3>Keyscapes</h3>
+                <p>Un bot Discord pour des escape games interactifs, offrant des énigmes captivantes et des scénarios immersifs pour les utilisateurs.</p>
             </div>
-            <div class="feature">
-                <div class="feature-icon">🧠</div>
-                <div class="feature-content">
-                    <h3>Modèle LSTM</h3>
-                    <p>Un modèle entraîné pour convertir des données audio en texte.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">✔️</div>
-                <div class="feature-content">
-                    <h3>Évaluation</h3>
-                    <p>Analyse des performances avec des métriques comme WER et CER.</p>
-                </div>
+            <div class="project-card">
+                <h3>BitsDefender</h3>
+                <p>Un bot Discord dédié à la sécurité, avec une vérification par Captcha pour protéger vos serveurs efficacement.</p>
             </div>
         </section>
 
-        <section class="documentation-contact">
-            <section id="documentation" class="documentation">
-                <h2>Documentation</h2>
-                <p>Consultez la documentation complète pour apprendre comment utiliser ORATIS dans vos projets.</p>
-                <a href="https://www.oratis.fr/docs" class="btn">Voir la documentation</a>
-            </section>
-
-            <section id="contact" class="contact">
-                <h2>Contact</h2>
-                <p>Pour plus d'informations, contactez-nous ou visitez notre dépôt GitHub.</p>
-                <a href="https://github.com/KucoDEV/Oratis" class="btn">Voir sur GitHub</a>
-            </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Pour toute information, contactez-nous à <a href="mailto:contact@oratis.fr">contact@oratis.fr</a> ou visitez notre <a href="https://github.com">GitHub</a>.</p>
         </section>
     </main>
 
     <footer>
-        <p>© 2024 <a href="https://www.oratis.fr">ORATIS</a> - Tous droits réservés.</p>
+        <p>© 2024 ORATIS - Tous droits réservés.</p>
     </footer>
-
-    <script>
-        // JavaScript Interactions
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
