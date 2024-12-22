@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Kuco @ OWNER</title>
     <style>
         * {
             margin: 0;
@@ -220,9 +220,39 @@
         .volume-bar input::-webkit-slider-thumb:hover {
             transform: scale(1.2);
         }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.97);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        #overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #overlay span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: lowercase;
+        }
     </style>
 </head>
 <body>
+    <div id="overlay" onclick="startVideo()">
+        <span>click to enter...</span>
+    </div>
+
     <div class="volume-control">
         <img id="volume-icon" src="assets/vol_on.png" alt="Volume" onclick="toggleMute()">
         <div class="volume-bar">
@@ -256,15 +286,24 @@
         </div>
     </div>
 
-    <video id="background-video" autoplay loop>
-        <source src="assets/background.mov" type="video/quicktime">
+    <video id="background-video" loop muted>
+        <source src="assets/background.mov" type="video/mp4">
+        <source src="assets/background.mp4" type="video/quicktime">
         Your browser does not support the video tag.
     </video>
+     
 
     <script>
+        const overlay = document.getElementById('overlay');
         const video = document.getElementById('background-video');
         const volumeIcon = document.getElementById('volume-icon');
         const volumeSlider = document.getElementById('volume');
+        
+        function startVideo() {
+            overlay.classList.add('hidden');
+            video.muted = false;
+            video.play();
+        }
 
         window.onload = () => {
             const savedVolume = localStorage.getItem('volume') || 1;
